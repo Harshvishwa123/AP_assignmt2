@@ -1,39 +1,45 @@
-
-
 # 🦁 Zootopia – Zoo Management System (Java CLI)
-🔗[ Click here to view the Project Overview](https://claude.ai/public/artifacts/7db7959d-2d81-434e-b6d9-66165252fce8)
-A Java-based command-line application that simulates the core functionalities of a zoo management system. Designed for educational purposes, this project demonstrates the use of **object-oriented programming**, **modular design**, and **menu-driven interaction** to manage zoo operations from both **Admin** and **Visitor** perspectives.
+
+🔗 [Click here to view the Project Overview](https://claude.ai/public/artifacts/7db7959d-2d81-434e-b6d9-66165252fce8)
+
+Zootopia is a Java-based **command-line application** that simulates the core operations of a zoo management system. The application allows both **Admins** and **Visitors** to interact with the system via a simple, menu-driven interface.
+
+This project demonstrates principles of:
+- ✅ Object-Oriented Programming (OOP)
+- ✅ Modular and clean code design
+- ✅ CLI-based user interaction
+- ✅ Data simulation without external dependencies
 
 ---
 
-## 🎯 Features
+## 🎯 Key Features
 
-### 👨‍💼 Admin Functionalities
-- Add, view, and manage **Attractions**
-- Add, view, and manage **Animals**
-- Add, view, and manage **Events**
-- View **Visitor Feedback**
-- View **Statistics** on zoo data
+### 👨‍💼 Admin Capabilities
+- 🏗️ Add, View, and Manage **Attractions**
+- 🐘 Add, View, and Manage **Animals**
+- 🎭 Add, View, and Manage **Events**
+- 📝 View **Visitor Feedback**
+- 📊 View basic **Zoo Statistics**
 
-### 👥 Visitor Functionalities
-- Browse zoo attractions and events
-- View animal categories and descriptions
-- Submit feedback and suggestions
+### 👥 Visitor Capabilities
+- 🌴 Browse **Attractions** and **Events**
+- 🦜 Explore **Animals** by category
+- 💬 Submit **Feedback** or Suggestions
 
 ---
 
-## 🧰 Technologies Used
+## 🧰 Tech Stack
 
 - **Java (JDK 8+)**
-- **Scanner** for input handling
-- **Modular programming** using methods and classes
-- No external libraries or dependencies required
+- Core Java libraries (`Scanner`, `ArrayList`, etc.)
+- Fully terminal-based — no external libraries required
+- Runs on any system with Java installed
 
 ---
 
-## 📁 How to Run
+## 🖥️ How to Run
 
-1. **Clone the repository** or download the `zootopia.java` file:
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/yourusername/zootopia-cli.git
-
+   cd zootopia-cli
