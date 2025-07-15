@@ -1,7 +1,7 @@
---------------------------------------------------------------
+
 
 # 🦁 Zootopia – Zoo Management System (Java CLI)
-[🔗 Click here to view the Project Overview](https://claude.ai/public/artifacts/7db7959d-2d81-434e-b6d9-66165252fce8)
+🔗[ Click here to view the Project Overview](https://claude.ai/public/artifacts/7db7959d-2d81-434e-b6d9-66165252fce8)
 A Java-based command-line application that simulates the core functionalities of a zoo management system. Designed for educational purposes, this project demonstrates the use of **object-oriented programming**, **modular design**, and **menu-driven interaction** to manage zoo operations from both **Admin** and **Visitor** perspectives.
 
 ---
@@ -37,5 +37,3 @@ A Java-based command-line application that simulates the core functionalities of
    ```bash
    git clone https://github.com/yourusername/zootopia-cli.git
 
-
---------------------------------------------------------------
