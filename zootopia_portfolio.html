@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOOtopia - Java Project Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        main {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffd700, #ffed4a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+            to { text-shadow: 0 0 30px rgba(255, 215, 0, 0.8); }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-right: 1rem;
+        }
+
+        .project-title {
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .tech-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .feature-description {
+            color: #718096;
+            line-height: 1.6;
+        }
+
+        .code-preview {
+            background: #2d3748;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            color: #e2e8f0;
+            font-family: 'JetBrains Mono', monospace;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #4a5568;
+        }
+
+        .code-lang {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+        }
+
+        .copy-btn {
+            background: #48bb78;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #38a169;
+        }
+
+        .architecture-section {
+            background: linear-gradient(135deg, #ffffff, #f7fafc);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .architecture-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 2rem;
+        }
+
+        .architecture-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .arch-component {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            min-width: 150px;
+            transition: transform 0.3s ease;
+        }
+
+        .arch-component:hover {
+            transform: scale(1.05);
+        }
+
+        .arch-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 3rem 0;
+            color: white;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ffd700, #ffed4a);
+            color: #2d3748;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        .demo-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .demo-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .demo-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .demo-feature {
+            background: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .demo-feature:hover {
+            background: #edf2f7;
+            transform: translateY(-5px);
+        }
+
+        .demo-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .architecture-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">🦁 ZOOtopia</a>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>ZOOtopia</h1>
+                <p>A comprehensive Java-based Zoo Management System</p>
+                <p>Showcasing Object-Oriented Programming, Interface Implementation, and Complex Data Management</p>
+            </div>
+        </section>
+
+        <section id="overview" class="container">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">🏛️</div>
+                    <div>
+                        <h2 class="project-title">Zoo Management System</h2>
+                        <p class="project-subtitle">Full-featured console application with dual-role access control</p>
+                    </div>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">OOP</span>
+                    <span class="tech-tag">Interfaces</span>
+                    <span class="tech-tag">Collections</span>
+                    <span class="tech-tag">Exception Handling</span>
+                    <span class="tech-tag">Data Structures</span>
+                </div>
+
+                <p>ZOOtopia is a sophisticated zoo management system built in Java that demonstrates advanced programming concepts including object-oriented design, interface implementation, and complex data management. The system provides separate interfaces for administrators and visitors, each with comprehensive functionality for managing zoo operations.</p>
+            </div>
+        </section>
+
+        <section id="features" class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-title">🔐 Admin Management</div>
+                    <div class="feature-description">
+                        Complete administrative control including attraction management, animal inventory, event scheduling, discount systems, and visitor statistics tracking.
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">👥 Visitor Experience</div>
+                    <div class="feature-description">
+                        User registration, membership purchases, ticket booking, attraction visits, animal interactions, and feedback system with discount code integration.
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">🐾 Animal Interactions</div>
+                    <div class="feature-description">
+                        Polymorphic animal system with mammals, amphibians, and reptiles, each with unique behaviors for feeding and educational content.
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">🎟️ Ticketing System</div>
+                    <div class="feature-description">
+                        Dynamic pricing with membership tiers, discount codes, special deals, and automated revenue tracking with balance management.
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">📊 Analytics Dashboard</div>
+                    <div class="feature-description">
+                        Real-time visitor statistics, revenue tracking, registration metrics, and comprehensive feedback collection system.
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">🎨 Interface Design</div>
+                    <div class="feature-description">
+                        Clean separation of concerns with interfaces for animal behaviors, demonstrating polymorphism and abstraction principles.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="architecture" class="container">
+            <div class="architecture-section">
+                <h2 class="architecture-title">System Architecture</h2>
+                
+                <div class="architecture-diagram">
+                    <div class="arch-component">
+                        <div class="arch-icon">🏗️</div>
+                        <h3>Main Class</h3>
+                        <p>Entry point with role selection</p>
+                    </div>
+                    
+                    <div class="arch-component">
+                        <div class="arch-icon">⚙️</div>
+                        <h3>Admin System</h3>
+                        <p>Complete management interface</p>
+                    </div>
+                    
+                    <div class="arch-component">
+                        <div class="arch-icon">👤</div>
+                        <h3>Visitor System</h3>
+                        <p>User experience management</p>
+                    </div>
+                    
+                    <div class="arch-component">
+                        <div class="arch-icon">🔗</div>
+                        <h3>Animal Interface</h3>
+                        <p>Polymorphic animal behaviors</p>
+                    </div>
+                </div>
+
+                <div class="code-preview">
+                    <div class="code-header">
+                        <span class="code-lang">Java</span>
+                        <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+                    </div>
+                    <pre id="codeSnippet">// Key Interface Implementation
+interface VisitAnimal {
+    void feed();
+    String read();
+}
+
+class Mammals implements VisitAnimal {
+    private String name;
+    
+    public Mammals(String name) {
+        this.name = name;
+    }
+    
+    @Override
+    public void feed() {
+        if(name.equalsIgnoreCase("lion")) {
+            System.out.println(name + ": Roar");
+        }
+        // More animal implementations...
+    }
+    
+    @Override
+    public String read() {
+        return "Educational content about " + name;
+    }
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo" class="container">
+            <div class="demo-section">
+                <h2 class="demo-title">System Capabilities</h2>
+                
+                <div class="demo-features">
+                    <div class="demo-feature">
+                        <div class="demo-icon">🎯</div>
+                        <h3>Role-Based Access</h3>
+                        <p>Separate admin and visitor interfaces with authentication</p>
+                    </div>
+                    
+                    <div class="demo-feature">
+                        <div class="demo-icon">💰</div>
+                        <h3>Revenue Management</h3>
+                        <p>Dynamic pricing, discounts, and financial tracking</p>
+                    </div>
+                    
+                    <div class="demo-feature">
+                        <div class="demo-icon">🎮</div>
+                        <h3>Interactive Experience</h3>
+                        <p>Animal feeding, educational content, and user engagement</p>
+                    </div>
+                    
+                    <div class="demo-feature">
+                        <div class="demo-icon">📈</div>
+                        <h3>Data Analytics</h3>
+                        <p>Visitor statistics, feedback analysis, and reporting</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Explore the Code?</h2>
+                <p>This project demonstrates advanced Java programming concepts and real-world application development</p>
+                <a href="https://github.com/Harshvishwa123/ZOOtopia" class="cta-button">View on GitHub</a>
+                <a href="mailto: harsh22205@iiitd.ac.in" class="cta-button">Get in Touch</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Copy code functionality
+        function copyCode() {
+            const codeSnippet = document.getElementById('codeSnippet');
+            navigator.clipboard.writeText(codeSnippet.textContent).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.textContent = 'Copied!';
+                setTimeout(() => {
+                    btn.textContent = 'Copy Code';
+                }, 2000);
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.1)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards and project cards
+        document.querySelectorAll('.feature-card, .project-card, .demo-feature').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Add floating animation to hero title
+        const heroTitle = document.querySelector('.hero h1');
+        let floatDirection = 1;
+        
+        setInterval(() => {
+            heroTitle.style.transform = `translateY(${floatDirection * 5}px)`;
+            floatDirection *= -1;
+        }, 2000);
+    </script>
+</body>
+</html>
